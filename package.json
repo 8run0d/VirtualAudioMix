@@ -1,0 +1,38 @@
+{
+  "name": "virtual-audio-mix",
+  "version": "0.1.0",
+  "description": "Routeur et mixeur audio virtuel open source. Développé par Bruno Del piero.",
+  "homepage": "https://github.com/8run0d/VirtualAudioMix",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/8run0d/VirtualAudioMix.git"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prebuild": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/clean-bundle.ps1",
+    "dev": "tauri dev",
+    "dev:ui": "vite --host 127.0.0.1 --port 1420",
+    "build": "tauri build",
+    "postbuild": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/finalize-msi.ps1",
+    "build:ui": "vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@tauri-apps/api": "^2.11.0",
+    "@xyflow/react": "^12.11.0",
+    "lucide-react": "^1.17.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "zustand": "^5.0.14"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.11.2",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.16"
+  }
+}
