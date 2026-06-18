@@ -1,0 +1,48 @@
+[package]
+name = "virtual-audio-mix"
+version = "0.1.0"
+description = "Application desktop open source de routage et mixage audio. Développé par Bruno Del piero."
+authors = ["Bruno Del piero"]
+license = "MIT"
+homepage = "https://github.com/8run0d/VirtualAudioMix"
+repository = "https://github.com/8run0d/VirtualAudioMix"
+edition = "2021"
+
+[lib]
+name = "virtual_audio_mix_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+cpal = "0.16"
+dasp = { version = "0.11", features = ["signal", "interpolate", "interpolate-linear"] }
+ringbuf = "0.4"
+rubato = "0.16"
+rustfft = "6.4.1"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sysinfo = "0.37"
+tauri = { version = "2", features = ["image-png", "tray-icon"] }
+thiserror = "2"
+uuid = { version = "1", features = ["v4", "serde"] }
+
+[target.'cfg(windows)'.dependencies]
+windows = { version = "0.62", features = [
+  "Win32_Foundation",
+  "Win32_Media",
+  "Win32_Media_Multimedia",
+  "Win32_Media_Audio",
+  "Win32_Security",
+  "Win32_Storage_FileSystem",
+  "Win32_System_Com",
+  "Win32_System_Com_StructuredStorage",
+  "Win32_System_IO",
+  "Win32_System_ProcessStatus",
+  "Win32_System_Registry",
+  "Win32_System_Threading",
+  "Win32_System_Variant",
+  "Win32_UI_Shell_PropertiesSystem"
+] }
+windows-core = "0.62"
